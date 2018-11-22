@@ -4,7 +4,7 @@
   <description asmv2:iconFile="logo_small.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="CSearch" version="0.1.2.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="CSearch" version="0.1.4.3" language="neutral" processorArchitecture="msil" />
     <commandLine file="CSearch.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Co0nUtilZ.dll" size="64512">
-      <assemblyIdentity name="Co0nUtilZ" version="0.2.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Co0nUtilZ.dll" size="65024">
+      <assemblyIdentity name="Co0nUtilZ" version="0.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XlDGempCoFHQ7qx6Jy3DQOHZwwd5yL6+RRWqNN6j8nw=</dsig:DigestValue>
+        <dsig:DigestValue>c1qqUilMhPsxqX3uLHh8f6mJMdEVcZRMJ3zjnhDQFNc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="65304">
-      <assemblyIdentity name="CSearch" version="0.1.2.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="66328">
+      <assemblyIdentity name="CSearch" version="0.1.4.3" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>++/PprPAp0ZhTMslw9ItJQCY5WcqVhsJo10N3JZmjFw=</dsig:DigestValue>
+        <dsig:DigestValue>7rtgi+bd/mW3Uyjo20bc/dgRDoMOufOuKEPbV/Xxyw0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

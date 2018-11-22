@@ -23,13 +23,14 @@ namespace Co0nSearchC
 
         public C_Settings settings;
         private List<C_FilesIndexer> indexers = new List<C_FilesIndexer>();
-        public Boolean ShouldReInitializeAfterSettingsChange = false; // Ween true, sollten die Sucher reinitialisiert werden. Einstellungen wurde geändert. Wird in anderer F_Settings gesetzt.
+        public Boolean ShouldReInitializeAfterSettingsChange = false; // Wenn true, sollten die Sucher reinitialisiert werden. Einstellungen wurde geändert. Wird in anderer F_Settings gesetzt.
 
         private System.DateTime SearchStarted, SearchEnded; // Für Benchmarking
 
         private int _items = 0;
         private int _runningthreads = 0;
 
+        // private List<C_FilesIndexerElement> filesfound = new List<C_FilesIndexerElement>(); //DEBUG
         
 
         private void HandleFolderProcessed(object sender)
@@ -54,7 +55,40 @@ namespace Co0nSearchC
                 processedfolders += indexer.foldersProcessedsoFar;
             }
 
+            /*
+            //DEBUG
+            if (!this.alreadyInList(this.filesfound, newitems))
+            {
+                this.filesfound.AddRange(newitems);
+            }
+            else
+            {
+
+            }
+            //DEBUG ENDE
+            */
+
             this.updateFileListAndLabels(false, newitems, "Bisher " + processedfolders + " Ordner durchsucht -> " + this._items.ToString() + " Elemente gefunden...", "Suche läuft (in " + this._runningthreads.ToString() + " Basisordnern):");
+        }
+
+        /// <summary>
+        /// DEBUG: Check for duplicates
+        /// </summary>
+        /// <param name="list1">list to check in</param>
+        /// <param name="list2">list to check for</param>
+        /// <returns></returns>
+        private bool alreadyInList(List<C_FilesIndexerElement> list1, List<C_FilesIndexerElement> list2)
+        {
+            foreach (C_FilesIndexerElement elem in list2)
+            {
+                bool exists= list1.Any(item => item.Name.Equals(elem.Name) && item.Type==item.Type);
+                if (exists)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void HandleSearchAborted(object sender)
@@ -179,6 +213,7 @@ namespace Co0nSearchC
 
         private void startSearch(String searchfor)
         {
+            //this.filesfound=new List<C_FilesIndexerElement>(); //DBEUG
             this.lstFiles.Items.Clear();
             this._items = 0;
 
@@ -291,15 +326,7 @@ namespace Co0nSearchC
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            this.StopSeachers();
             
-
-            if (this.txtSearch.Text.Length >= 2)
-           {
-                this.updateCountLabel("Bisher keine Daten.");
-                this.updateStateLabel("Suche beginnt...");
-                this.startSearch(this.txtSearch.Text);
-            }
             
         }
 
@@ -424,6 +451,39 @@ namespace Co0nSearchC
             {
             }
             */
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //Enter pressed
+                this.StopSeachers();
+
+                //Wait for SearchThreads to stop
+                foreach (C_FilesIndexer indexer in this.indexers)
+                {
+                    if (indexer._SearchThread != null && indexer._SearchThread.ThreadState == System.Threading.ThreadState.Running)
+                    {
+                        indexer._SearchThread.Join();
+                    }
+
+                }
+
+                if (this.txtSearch.Text.Length >= 2)
+                {
+                    this.updateCountLabel("Bisher keine Daten.");
+                    this.updateStateLabel("Suche beginnt...");
+                    this.startSearch(this.txtSearch.Text);
+                }
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void lblCount_Click(object sender, EventArgs e)

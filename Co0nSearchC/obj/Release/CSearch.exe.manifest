@@ -4,7 +4,7 @@
   <description asmv2:iconFile="logo_small.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="CSearch" version="0.1.4.2" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="CSearch" version="0.1.4.3" language="neutral" processorArchitecture="msil" />
     <commandLine file="CSearch.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BAdtnVSLwijNik2EMiM9zxYsaXaxmAy+C1RvBMuYK2k=</dsig:DigestValue>
+        <dsig:DigestValue>Zmq9ZUbcWEACWe5GsYeY+AHXFLV6ktvTdY2sGgcyQ6Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="64280">
-      <assemblyIdentity name="CSearch" version="0.1.4.2" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="65304">
+      <assemblyIdentity name="CSearch" version="0.1.4.3" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Jzmc0A5u/MmZVXXXWFJXWrXs01LmrGYdHGBHxDGJ1nU=</dsig:DigestValue>
+        <dsig:DigestValue>tpp7orRJW5yHUeAjzgmsW3zbigZjgdxWWR1BPfYF5lg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
