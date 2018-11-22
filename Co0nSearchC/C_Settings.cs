@@ -45,17 +45,16 @@ namespace Co0nSearchC
         /// </summary>
         private void dropAllBaseDirs()
         {
-            foreach (String Value in this._baseDirs)
-            {
-                try
-                {
-                    this._regHelper.dropValue(this._Instancename, Value);
-                }
-                catch (Exception ex)
-                {
+            List<String> result = this._regHelper.ListValues(this._Instancename);            
 
+            foreach (String res in result)
+            {
+                if (res.StartsWith(this._BaseDirPrefix)) // Wenn der gefundene Schlüssel mit dem gesuchten Präfix übereinstimmt.
+                {
+                    this._regHelper.dropValue(this._Instancename, res);
                 }
             }
+            
         }
 
         /// <summary>
@@ -135,11 +134,16 @@ namespace Co0nSearchC
         /// </summary>
         public void putAllBaseDirs()
         {
+            
             if (this._baseDirs.Count > 0)
             {
-                this.dropAllBaseDirs();
+                this._baseDirs.Sort();
+                this.dropAllBaseDirs(); //... und dort löschen.
+
+                //Anschließend die aktuelle definierten, zwischengepseicherten in die Registry schreiben.
                 int counter=0;
                 foreach (String Value in this._baseDirs)
+                //foreach (String Value in currentbasedirs)
                 {
                     this._regHelper.WriteSettingToRegistry(this._Instancename, this._BaseDirPrefix+counter.ToString(), Value);
                     counter++;

@@ -9,8 +9,8 @@ namespace Co0nSearchC
     public static class Program
     {
         public static String APPNAME = "CSearch";
-        public static float VERSION = 0.121f;
-        public static String VERSIONDATE = "20181120";
+        public static float VERSION = 0.142f;
+        public static String VERSIONDATE = "20181122";
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>

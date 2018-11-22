@@ -30,6 +30,8 @@ namespace Co0nSearchC
         private int _items = 0;
         private int _runningthreads = 0;
 
+        
+
         private void HandleFolderProcessed(object sender)
         {// Aktualisiert die Anzeige der berabeiteten Ordner
             int processedfolders = 0;
@@ -55,18 +57,28 @@ namespace Co0nSearchC
             this.updateFileListAndLabels(false, newitems, "Bisher " + processedfolders + " Ordner durchsucht -> " + this._items.ToString() + " Elemente gefunden...", "Suche läuft (in " + this._runningthreads.ToString() + " Basisordnern):");
         }
 
+        private void HandleSearchAborted(object sender)
+        {//Der Thread des Suchers wurde abgebrochen...            
+                this._runningthreads--;           
+        }
+
         private void HandleSearchfinished(object sender, String msg)
         { // Wird aufgerufen wenn ein Sucher fertig ist.
 
-            this._runningthreads -= 1;
+            this._runningthreads--;
 
 
             Boolean stillonerunning = false; //Mindestens ein Sucher läuft noch
-            //prüfen ob noch mindestens ein Sucher läuft...
+                                             //prüfen ob noch mindestens ein Sucher läuft...
+            String state = "";
             if (this._runningthreads > 0)
             {
                 stillonerunning = true;
-                String state = "Suche läuft(in " + this._runningthreads.ToString() + " Basisordnern):";
+                state = "Suche läuft(in " + this._runningthreads.ToString() + " Basisordnern):";
+            }
+            else
+            {
+                state = "Suche beendet - Bereite Ergebnis auf:";
             }
 
 
@@ -76,7 +88,8 @@ namespace Co0nSearchC
                 this.SearchEnded = DateTime.Now;
                 TimeSpan ts = this.SearchEnded - this.SearchStarted;
 
-                String state = "Suche beendet - Ausführungsdauer (" + ts.TotalSeconds.ToString() + " Sekunden):";
+                state = "Suche beendet - Ausführungsdauer (" + Math.Round(ts.TotalSeconds, 2).ToString() + " Sekunden):";
+                //state = "Suche beendet - Ausführungsdauer (" + ts.TotalSeconds.ToString() + " Sekunden):";
 
                 int processedfolders = 0;
 
@@ -101,6 +114,8 @@ namespace Co0nSearchC
         private void HandleSearchStarted(object sender, String msg)
         {
             this.SearchStarted = DateTime.Now;
+            
+            this._runningthreads++;
         }
 
         delegate void updateFileListAndLabelsCallback(bool clearlist, List<C_FilesIndexerElement> items, string resultmsg, string statemsg);
@@ -165,11 +180,12 @@ namespace Co0nSearchC
         private void startSearch(String searchfor)
         {
             this.lstFiles.Items.Clear();
+            this._items = 0;
 
             foreach (C_FilesIndexer indexer in this.indexers)
             {
 
-                this._runningthreads += 1;
+                //this._runningthreads += 1;
                 indexer.FindItems(searchfor, true);
             }
 
@@ -215,6 +231,7 @@ namespace Co0nSearchC
                         indexer.OnSearchFinished += this.HandleSearchfinished;
                         indexer.OnSearchStarted += this.HandleSearchStarted;
                         indexer.OnFolderProcessed += this.HandleFolderProcessed;
+                        indexer.OnSearchAborted += this.HandleSearchAborted;
                     }
 
                 }
@@ -236,14 +253,19 @@ namespace Co0nSearchC
 
         private void StopSeachers()
         {//Beendet laufende Suchen
+
+            this.updateCountLabel("Bisher keine Daten.");
+            this.updateStateLabel("Suche inaktiv: Bitte mindestens 2 Zeichen eingeben.");
+
             if (this.indexers != null)
             {
-                this._runningthreads = 0;
+                //this._runningthreads = 0;
                 foreach (C_FilesIndexer indexer in this.indexers)
                 {
                     if (indexer != null)
                     {
                         indexer.StopSearch();
+                        //this._runningthreads -= 1;
                     }
                 }
 
@@ -270,31 +292,25 @@ namespace Co0nSearchC
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             this.StopSeachers();
+            
 
-            if (this.txtSearch.Text.Length > 3)
-            {
-                this.lblCount.Text = "Neue Suche...";
+            if (this.txtSearch.Text.Length >= 2)
+           {
+                this.updateCountLabel("Bisher keine Daten.");
+                this.updateStateLabel("Suche beginnt...");
                 this.startSearch(this.txtSearch.Text);
             }
+            
         }
 
 
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
-
-            result = MessageBox.Show("Programm wirklich beeenden?", "Beenden?", buttons);
-
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                this.StopSeachers();
-                this.Close();
-            }
+            this.Close(); 
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        {// Catches the Form closing Event to ask the user to really quit.
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
 
@@ -324,8 +340,9 @@ namespace Co0nSearchC
             //SettingsForm.Show(); // Als separate Form. Andere Forms können gleichzeitig bedient werden.
 
             if (this.ShouldReInitializeAfterSettingsChange)
-            {
+            {                
                 this.intializeIndexers(); //Sucher neu intialisieren
+                this.txtSearch.Text = ""; //Reset Textfield, due to Basefolder change
             }
 
         }

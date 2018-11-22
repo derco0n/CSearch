@@ -13,4 +13,7 @@
   <PropertyGroup>
     <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\</ReferencePath>
+  </PropertyGroup>
 </Project>

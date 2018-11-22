@@ -89,6 +89,11 @@ namespace Co0nSearchC
                 {
                     this.caller.settings.putAllBaseDirs(); //Änderungen wirklich in die Registry schreiben
                     this.caller.ShouldReInitializeAfterSettingsChange = true;
+                    
+                }
+                else
+                {
+                    this.caller.settings.getAllBaseDirs(); //Ursprünglichen Stand aus der Registry neu laden.
                 }
             }
         }
