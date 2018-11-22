@@ -1,7 +1,7 @@
 # CSearch
 
 ## What is it?
-A lightweight Tool to search for files and folders (multithreaded) which does **not** require administrative permissions.
+A lightweight Tool to search for files and folders (multithreaded) which does **not** require administrative permissions and runs on Microsoft Windows (and may be Linux with some kind runtime...).
 
 
 ## How does it look like?
