@@ -4,7 +4,7 @@
   <description asmv2:iconFile="logo_small.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="CSearch" version="0.1.2.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="CSearch" version="0.1.4.2" language="neutral" processorArchitecture="msil" />
     <commandLine file="CSearch.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -44,25 +44,25 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Co0nUtilZ.dll" size="59392">
-      <assemblyIdentity name="Co0nUtilZ" version="0.2.0.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Co0nUtilZ" version="0.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zvpTF1TW/kxoVP6uAv08cj6sKyBOHOc5bPb1jnI1dqM=</dsig:DigestValue>
+        <dsig:DigestValue>BAdtnVSLwijNik2EMiM9zxYsaXaxmAy+C1RvBMuYK2k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="64280">
-      <assemblyIdentity name="CSearch" version="0.1.2.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="CSearch" version="0.1.4.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>E3xSPb4Z87M3kpdsgs+P+j9sOgMK5z7Urw6X/t4CsX0=</dsig:DigestValue>
+        <dsig:DigestValue>Jzmc0A5u/MmZVXXXWFJXWrXs01LmrGYdHGBHxDGJ1nU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
