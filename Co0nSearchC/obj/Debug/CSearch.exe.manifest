@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="67864">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="68888">
       <assemblyIdentity name="CSearch" version="0.1.4.4" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xxa6AKL2e8dOgLgTUwNhk8j40hEVcJ9iTRtgZe7uLBg=</dsig:DigestValue>
+        <dsig:DigestValue>oq/uW2gijSHIHMEB0x1dfFnkuSaNstc3Rwim5A3ODtM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

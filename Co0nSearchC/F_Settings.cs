@@ -23,6 +23,7 @@ namespace Co0nSearchC
         public F_Settings(object caller)
         {
             InitializeComponent();
+            this.defineContextMenu();
             try
             {
                 this.caller = (F_Main)caller;
@@ -33,7 +34,8 @@ namespace Co0nSearchC
                 //Dies sollte niemals passieren...
                 MessageBox.Show("Die Einstellungen konnten nicht aus der Hauptmaske übernommen werden. Abbruch! \r\n\r\n" + ex.ToString() + "\r\n\r\n" + ex.StackTrace, "Schwerwiegender Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
-            }            
+            }  
+            
 
         }
                 
@@ -41,7 +43,47 @@ namespace Co0nSearchC
         {
             
             this.lstBaseDirs.Items.Clear();
-            this.lstBaseDirs.Items.AddRange(caller.settings.BaseDirs.ToArray());            
+            this.lstBaseDirs.Items.AddRange(caller.settings.BaseDirs.ToArray());    
+           
+        }
+
+        private string _selectedMenuItem;
+        private ContextMenuStrip collectionRoundMenuStrip;
+        private void defineContextMenu()
+        {
+            var toolStripMenuItem1 = new ToolStripMenuItem { Text = "Ordner aktivieren/deaktivieren" };
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
+            var toolStripMenuItem2 = new ToolStripMenuItem { Text = "Ordner löschen" };
+            toolStripMenuItem2.Click += toolStripMenuItem2_Click;
+            collectionRoundMenuStrip = new ContextMenuStrip();
+            collectionRoundMenuStrip.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
+            
+        }
+
+        private void lstBaseDirs_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right) return;
+            var index = lstBaseDirs.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                _selectedMenuItem = lstBaseDirs.Items[index].ToString();
+                collectionRoundMenuStrip.Show(Cursor.Position);
+                collectionRoundMenuStrip.Visible = true;
+            }
+            else
+            {
+                collectionRoundMenuStrip.Visible = false;
+            }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(_selectedMenuItem);            
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(_selectedMenuItem);
         }
 
         private void grpBaseDirs_Enter(object sender, EventArgs e)
@@ -125,5 +167,7 @@ namespace Co0nSearchC
         {
 
         }
+
+      
     }
 }
