@@ -16,4 +16,7 @@
   <PropertyGroup>
     <ReferencePath>C:\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\</ReferencePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>--hidden</StartArguments>
+  </PropertyGroup>
 </Project>

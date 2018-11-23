@@ -1,0 +1,6 @@
+Version 0.144 (20181123):
+=========================
+- Added:
+	- Changelog
+- fixed Bugs:
+	- Itemlist behind statusbar

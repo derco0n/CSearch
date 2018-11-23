@@ -45,6 +45,7 @@
             this.grpState = new System.Windows.Forms.GroupBox();
             this.lblState = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.changelogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.grpSearch.SuspendLayout();
             this.grpResults.SuspendLayout();
@@ -59,7 +60,7 @@
             this.lstFiles.Location = new System.Drawing.Point(3, 16);
             this.lstFiles.Margin = new System.Windows.Forms.Padding(2);
             this.lstFiles.Name = "lstFiles";
-            this.lstFiles.Size = new System.Drawing.Size(859, 558);
+            this.lstFiles.Size = new System.Drawing.Size(1119, 532);
             this.lstFiles.Sorted = true;
             this.lstFiles.TabIndex = 0;
             this.lstFiles.SelectedIndexChanged += new System.EventHandler(this.lstFiles_SelectedIndexChanged);
@@ -74,7 +75,7 @@
             this.txtSearch.Location = new System.Drawing.Point(3, 16);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(859, 20);
+            this.txtSearch.Size = new System.Drawing.Size(1119, 20);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
@@ -100,7 +101,7 @@
             this.überToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(865, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1125, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -137,7 +138,8 @@
             // überToolStripMenuItem
             // 
             this.überToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.überDiesesProgrammToolStripMenuItem});
+            this.überDiesesProgrammToolStripMenuItem,
+            this.changelogToolStripMenuItem});
             this.überToolStripMenuItem.Name = "überToolStripMenuItem";
             this.überToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.überToolStripMenuItem.Text = "Über";
@@ -155,7 +157,7 @@
             this.grpSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpSearch.Location = new System.Drawing.Point(0, 24);
             this.grpSearch.Name = "grpSearch";
-            this.grpSearch.Size = new System.Drawing.Size(865, 52);
+            this.grpSearch.Size = new System.Drawing.Size(1125, 52);
             this.grpSearch.TabIndex = 6;
             this.grpSearch.TabStop = false;
             this.grpSearch.Text = "Suche:";
@@ -166,7 +168,7 @@
             this.grpResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpResults.Location = new System.Drawing.Point(0, 76);
             this.grpResults.Name = "grpResults";
-            this.grpResults.Size = new System.Drawing.Size(865, 577);
+            this.grpResults.Size = new System.Drawing.Size(1125, 551);
             this.grpResults.TabIndex = 7;
             this.grpResults.TabStop = false;
             this.grpResults.Text = "Ergebnisse:";
@@ -177,9 +179,9 @@
             this.grpState.Controls.Add(this.lblState);
             this.grpState.Controls.Add(this.lblCount);
             this.grpState.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpState.Location = new System.Drawing.Point(0, 606);
+            this.grpState.Location = new System.Drawing.Point(0, 627);
             this.grpState.Name = "grpState";
-            this.grpState.Size = new System.Drawing.Size(865, 47);
+            this.grpState.Size = new System.Drawing.Size(1125, 47);
             this.grpState.TabIndex = 8;
             this.grpState.TabStop = false;
             this.grpState.Text = "Status:";
@@ -195,16 +197,23 @@
             this.lblState.TabIndex = 3;
             this.lblState.Text = "Suche inaktiv.";
             // 
+            // changelogToolStripMenuItem
+            // 
+            this.changelogToolStripMenuItem.Name = "changelogToolStripMenuItem";
+            this.changelogToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.changelogToolStripMenuItem.Text = "Changelog";
+            this.changelogToolStripMenuItem.Click += new System.EventHandler(this.changelogToolStripMenuItem_Click);
+            // 
             // F_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(865, 653);
-            this.Controls.Add(this.grpState);
+            this.ClientSize = new System.Drawing.Size(1125, 674);
             this.Controls.Add(this.grpResults);
             this.Controls.Add(this.grpSearch);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.grpState);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -242,6 +251,7 @@
         private System.Windows.Forms.GroupBox grpState;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripMenuItem changelogToolStripMenuItem;
     }
 }
 

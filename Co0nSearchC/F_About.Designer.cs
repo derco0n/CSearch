@@ -28,24 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblAbout = new System.Windows.Forms.Label();
+            this.txtInfo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // lblAbout
+            // txtInfo
             // 
-            this.lblAbout.AutoSize = true;
-            this.lblAbout.Location = new System.Drawing.Point(13, 13);
-            this.lblAbout.Name = "lblAbout";
-            this.lblAbout.Size = new System.Drawing.Size(35, 13);
-            this.lblAbout.TabIndex = 0;
-            this.lblAbout.Text = "label1";
+            this.txtInfo.BackColor = System.Drawing.SystemColors.Window;
+            this.txtInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtInfo.Location = new System.Drawing.Point(0, 0);
+            this.txtInfo.Multiline = true;
+            this.txtInfo.Name = "txtInfo";
+            this.txtInfo.Size = new System.Drawing.Size(800, 450);
+            this.txtInfo.TabIndex = 1;
+            this.txtInfo.TextChanged += new System.EventHandler(this.txtInfo_TextChanged);
             // 
             // F_About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblAbout);
+            this.Controls.Add(this.txtInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -58,7 +60,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblAbout;
+        private System.Windows.Forms.TextBox txtInfo;
     }
 }

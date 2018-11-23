@@ -16,10 +16,13 @@ namespace Co0nSearchC
 {
     public partial class F_Main : Form
     {
-        public F_Main()
+        public F_Main(bool showhiddenfiles)
         {
+            this._showhiddenfiles = showhiddenfiles;
             InitializeComponent();
         }
+
+        private bool _showhiddenfiles = false; // Find hiddenfiles too...
 
         public C_Settings settings;
         private List<C_FilesIndexer> indexers = new List<C_FilesIndexer>();
@@ -257,7 +260,7 @@ namespace Co0nSearchC
                 {
                     foreach (String BaseDir in this.settings.BaseDirs)
                     { //Für jedes Basisverzeichnis einen Sucher initilisieren.
-                        this.indexers.Add(new C_FilesIndexer(@BaseDir));
+                        this.indexers.Add(new C_FilesIndexer(@BaseDir, this._showhiddenfiles));
                     }
 
                     foreach (C_FilesIndexer indexer in this.indexers)
@@ -273,13 +276,17 @@ namespace Co0nSearchC
             }
             this.ShouldReInitializeAfterSettingsChange = false;
         }
-
+        
         private void Form1_Load(object sender, EventArgs e)
         { // Start der Mainform
             this.getSettings();
             intializeIndexers();
 
             this.Text = Program.APPNAME + " Version: " + Program.VERSION.ToString() + " (" + Program.VERSIONDATE + ")";
+            if (this._showhiddenfiles)
+            {
+                this.Text += " (include hidden)";
+            }
         }
 
         private void lstFiles_SelectedIndexChanged(object sender, EventArgs e)
@@ -376,7 +383,9 @@ namespace Co0nSearchC
 
         private void überDiesesProgrammToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form AboutForm = new F_About();
+            String title = "Über dieses Programm:";
+            String msg = Program.APPNAME + " Version: " + Program.VERSION.ToString() + " (" + Program.VERSIONDATE + ")" + "\r\n\r\nCSearch: dient der rekursiven multithreaded Suche nach Dateien und Ordnern in verschiedenen Basisordnern.\r\nDas Ziel ist es, eine schnelle Suche in verschiedenenn Ordnerstrukturen gleichzeitig zu ermöglichen\r\nund dabei ein einfacheres Handling und eines bessere Geschwindigkeit als die integrierte Windowssuche (welche viel detaillierter sucht, aber wesentlich mehr Zeit benötigt) zu bieten.\r\n\r\nCopyright (C) <2018>  <Dennis Marx>\r\n\r\n    This program is free software: you can redistribute it and/or modify\r\n    it under the terms of the GNU General Public License as published by\r\n    the Free Software Foundation, either version 3 of the License, or\r\n    (at your option) any later version.\r\n\r\n    This program is distributed in the hope that it will be useful,\r\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\r\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\n    GNU General Public License for more details.\r\n\r\n    You should have received a copy of the GNU General Public License\r\n    along with this program.  If not, see <https://www.gnu.org/licenses/>.\r\n\r\nQuellcode unter:\r\nhttps://github.com/derco0n/CSearch";
+            Form AboutForm = new F_About(msg, title);
             AboutForm.ShowDialog();
         }
 
@@ -484,6 +493,15 @@ namespace Co0nSearchC
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void changelogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String title = "Changelog:";
+            String msg = "";
+            msg+="Version 0.144 (20181123):\r\n=========================\r\n- Added:\r\n\t- Changelog\r\n- fixed Bugs:\r\n\t- Itemlist behind statusbar\r\n";
+            Form AboutForm = new F_About(msg, title);
+            AboutForm.ShowDialog();
         }
 
         private void lblCount_Click(object sender, EventArgs e)
