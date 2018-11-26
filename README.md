@@ -9,7 +9,8 @@ It looks like this:
 ![CSearch-Screenshot](https://github.com/derco0n/CSearch/blob/master/CSearch_Screenshot.PNG)
 
 ## How to use it?
-Clone Porject and build on your own
+Clone Project and build on your own
+
 *Note:
 This software requires [Co0nUtilZ-Library]https://github.com/derco0n/coonutils, which you may link to your projectfolder as project or assembly (.dll-file).*
 
