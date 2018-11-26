@@ -315,6 +315,16 @@ namespace CSearch
                     }
                 }
 
+                //Wait for SearchThreads to stop
+                foreach (C_FilesIndexer indexer in this.indexers)
+                {
+                    if (indexer._SearchThread != null && indexer._SearchThread.ThreadState == System.Threading.ThreadState.Running)
+                    {
+                        indexer._SearchThread.Join();
+                    }
+
+                }
+
             }
         }
 
@@ -483,15 +493,7 @@ namespace CSearch
                 //Enter pressed
                 this.StopSeachers();
 
-                //Wait for SearchThreads to stop
-                foreach (C_FilesIndexer indexer in this.indexers)
-                {
-                    if (indexer._SearchThread != null && indexer._SearchThread.ThreadState == System.Threading.ThreadState.Running)
-                    {
-                        indexer._SearchThread.Join();
-                    }
-
-                }
+                
 
                 if (this.txtSearch.Text.Length >= 2)
                 {
@@ -508,8 +510,9 @@ namespace CSearch
         {
             String title = "Changelog:";
             String msg = "";
-            msg += "Version 0.15 (20181126):\r\n=========================\r\n- Added:\r\n\t- En-/Disabling of Searchdirectories\r\n- fixed Bugs:\r\n\t- Fixed wrong namespaces in source code\r\n\r\n";
-            msg+="Version 0.144 (20181123):\r\n=========================\r\n- Added:\r\n\t- Changelog\r\n- fixed Bugs:\r\n\t- Itemlist behind statusbar\r\n";
+            msg += "Version 0.151 (20181126):\r\n=========================\r\n- fixed Bugs:\r\n\t- Stopping searchers (e.g. when changing folders) and waiting for them to finish \r\n\r\n";
+            msg += "Version 0.150 (20181126):\r\n=========================\r\n- Added:\r\n\t- En-/Disabling of Searchdirectories\r\n- fixed Bugs:\r\n\t- Fixed wrong namespaces in source code\r\n\r\n";
+            msg += "Version 0.144 (20181123):\r\n=========================\r\n- Added:\r\n\t- Changelog\r\n- fixed Bugs:\r\n\t- Itemlist behind statusbar\r\n";
             Form AboutForm = new F_About(msg, title);
             AboutForm.ShowDialog();
         }
