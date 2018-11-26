@@ -6,7 +6,7 @@ A lightweight Tool to search for files and folders (multithreaded) which does **
 
 ## How does it look like?
 It looks like this:
-![CSearch-Screenshot](https://github.com/derco0n/CSearch/blob/master/CSearch_Screenshot.PNG)
+![CSearch-Screenshot](https://github.com/derco0n/CSearch/blob/master/CSearch_Screenshot_0151.PNG)
 
 ## How to use it?
 Clone Project and build on your own
