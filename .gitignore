@@ -13,3 +13,4 @@
 /Co0nSearchC/bin/Release/CSearch.exe.config
 /Co0nSearchC/bin/Release/CSearch.exe.manifest
 /Co0nSearchC/bin/Release/CSearch.pdb
+*.sqlite
