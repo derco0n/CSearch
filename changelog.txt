@@ -1,3 +1,10 @@
+Version 0.15 (20181126):
+=========================
+- Added:
+	- En-/Disabling of Searchdirectories
+- fixed Bugs:
+	- Fixed wrong namespaces in source code
+
 Version 0.144 (20181123):
 =========================
 - Added:

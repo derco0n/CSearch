@@ -1,4 +1,4 @@
-﻿namespace Co0nSearchC
+﻿namespace CSearch
 {
     public partial class F_Settings
     {
@@ -94,13 +94,15 @@
             // 
             // lstBaseDirs
             // 
+            this.lstBaseDirs.CheckOnClick = true;
             this.lstBaseDirs.FormattingEnabled = true;
             this.lstBaseDirs.Location = new System.Drawing.Point(8, 74);
             this.lstBaseDirs.Name = "lstBaseDirs";
             this.lstBaseDirs.Size = new System.Drawing.Size(892, 484);
             this.lstBaseDirs.TabIndex = 0;
-            this.lstBaseDirs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstBaseDirs_MouseDown);
+            this.lstBaseDirs.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lstBaseDirs_ItemCheck);
             this.lstBaseDirs.SelectedIndexChanged += new System.EventHandler(this.lstBaseDirs_SelectedIndexChanged);
+            this.lstBaseDirs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstBaseDirs_MouseDown);
             // 
             // F_Settings
             // 

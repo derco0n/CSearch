@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Co0nUtilZ;
 using Microsoft.Win32;
 
-namespace Co0nSearchC
+namespace CSearch
 {
     /// <summary>
     /// Defines possible settings
@@ -16,8 +16,9 @@ namespace Co0nSearchC
 
         #region variables
         private C_RegistryHelper _regHelper;
-        private List<String> _baseDirs = new List<string>();
-        private String _BaseDirPrefix="SearchBaseDir";
+        private List<C_BaseDir> _baseDirs = new List<C_BaseDir>();
+        private String _EnabledBaseDirPrefix=C_BaseDir.ENABLEDPREFIX; //Prefix for Enabled folders
+        private String _DisabledBaseDirPrefix = C_BaseDir.DISABLEDPREFIX; //Prefix for Disabled folders
         private String _Instancename = "Main";
         #endregion
 
@@ -30,7 +31,7 @@ namespace Co0nSearchC
 
         #region properties
         //Returns a String-List of all BaseDirectories saved in RAM
-        public List<String> BaseDirs
+        public List<C_BaseDir> BaseDirs
         {// Property BaseDirs
             get
             {
@@ -49,7 +50,7 @@ namespace Co0nSearchC
 
             foreach (String res in result)
             {
-                if (res.StartsWith(this._BaseDirPrefix)) // Wenn der gefundene Schlüssel mit dem gesuchten Präfix übereinstimmt.
+                if (res.StartsWith(this._EnabledBaseDirPrefix) || res.StartsWith(this._DisabledBaseDirPrefix)) // Wenn der gefundene Schlüssel mit dem gesuchten Präfix übereinstimmt.
                 {
                     this._regHelper.dropValue(this._Instancename, res);
                 }
@@ -62,7 +63,7 @@ namespace Co0nSearchC
         /// </summary>
         /// <param name="Value"></param>
         /// <returns></returns>
-        public bool removeBaseDir(String Value) // Entfernt einen Basisordner ... muss anschließend noch mit "putAllBaseDirs()" geschrieben werden.
+        public bool removeBaseDir(C_BaseDir Value) // Entfernt einen Basisordner ... muss anschließend noch mit "putAllBaseDirs()" geschrieben werden.
         {
             try
             {
@@ -87,8 +88,8 @@ namespace Co0nSearchC
         /// Adds a new Path to the Basedirectories saved in RAM
         /// </summary>
         /// <param name="Value">Basedir-Path</param>
-        /// <returns></returns>
-        public bool AddBaseDir(String Value) // Fügt einen Basisordner hinzu ... muss anschließend noch mit "putAllBaseDirs()" geschrieben werden.
+        /// <returns>True on success</returns>
+        public bool AddBaseDir(C_BaseDir Value) // Fügt einen Basisordner hinzu ... muss anschließend noch mit "putAllBaseDirs()" geschrieben werden.
         {
             try
             {
@@ -120,12 +121,19 @@ namespace Co0nSearchC
 
             foreach (String res in result)
             {
-                if (res.StartsWith(this._BaseDirPrefix)) // Wenn der gefundene Schlüssel mit dem gesuchten Präfix übereinstimmt.
-                {
+                if (res.StartsWith(this._EnabledBaseDirPrefix)) // Wenn der gefundene Schlüssel mit dem gesuchten Präfix für aktivierte übereinstimmt.
+                {//Enabled Folders
                     String value = this._regHelper.ReadSettingFromRegistry(this._Instancename, res);
-                    this._baseDirs.Add(value);
+                    this._baseDirs.Add(new C_BaseDir(value, true));
+                }
+                else if (res.StartsWith(this._DisabledBaseDirPrefix)) // Wenn der gefundene Schlüssel mit dem gesuchten Präfix für deaktivierte Ordner übereinstimmt.
+                {//Disabled Folders
+                    String value = this._regHelper.ReadSettingFromRegistry(this._Instancename, res);
+                    this._baseDirs.Add(new C_BaseDir(value, false));
                 }
             }
+
+            this._baseDirs.Sort(); //Sort results by their name
 
         }
 
@@ -141,15 +149,53 @@ namespace Co0nSearchC
                 this.dropAllBaseDirs(); //... und dort löschen.
 
                 //Anschließend die aktuelle definierten, zwischengepseicherten in die Registry schreiben.
-                int counter=0;
-                foreach (String Value in this._baseDirs)
+                int counterenabled=0;
+                int counterdisabled = 0;
+                foreach (C_BaseDir Value in this._baseDirs)
                 //foreach (String Value in currentbasedirs)
                 {
-                    this._regHelper.WriteSettingToRegistry(this._Instancename, this._BaseDirPrefix+counter.ToString(), Value);
-                    counter++;
+                    if (Value.IsEnabled)
+                    {//Enabled folders
+                        this._regHelper.WriteSettingToRegistry(this._Instancename, this._EnabledBaseDirPrefix + counterenabled.ToString(), Value.Path);
+                        counterenabled++;
+                    }
+                    else if (!Value.IsEnabled)
+                    {//Disabled folders
+                        this._regHelper.WriteSettingToRegistry(this._Instancename, this._DisabledBaseDirPrefix + counterdisabled.ToString(), Value.Path);
+                        counterdisabled++;
+                    }
                 }
             }
 
+        }
+
+        /// <summary>
+        /// Sets the Enabled/Disabled state of a specific item in RAM
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="Enable"></param>
+        /// <returns></returns>
+        public bool setState(C_BaseDir value, Boolean Enable)
+        {
+            foreach (C_BaseDir bdir in this._baseDirs)
+            //foreach (String Value in currentbasedirs)
+            {
+                if (bdir.Equals(value))
+                {
+                    if (Enable)
+                    {
+                        return bdir.Enable();
+                    }
+                    else
+                    {
+                        return bdir.Disable();
+                    }
+                }
+
+            }
+
+
+            return false; //Item not found
         }
         #endregion
 
