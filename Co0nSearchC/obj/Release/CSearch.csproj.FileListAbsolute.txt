@@ -26,9 +26,6 @@ C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\bin\Release\CSearch.pdb
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\bin\Release\Co0nUtilZ.dll
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\bin\Release\Co0nUtilZ.pdb
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.csprojAssemblyReference.cache
-C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\Co0nSearchC.F_About.resources
-C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\Co0nSearchC.F_Main.resources
-C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\Co0nSearchC.F_Settings.resources
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.Properties.Resources.resources
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.csproj.GenerateResource.cache
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.csproj.CoreCompileInputs.cache
@@ -38,3 +35,6 @@ C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.application
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.csproj.CopyComplete
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.exe
 C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.pdb
+C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.F_About.resources
+C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.F_Main.resources
+C:\Users\dmarx\source\repos\CSearch\Co0nSearchC\obj\Release\CSearch.F_Settings.resources

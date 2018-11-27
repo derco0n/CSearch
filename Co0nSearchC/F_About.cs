@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Co0nSearchC
+namespace CSearch
 {
     public partial class F_About : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace Co0nSearchC
+﻿namespace CSearch
 {
     partial class F_About
     {

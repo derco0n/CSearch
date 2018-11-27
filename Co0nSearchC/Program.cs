@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Co0nSearchC
+namespace CSearch
 {
     public static class Program
     {
         
         public static String APPNAME = "CSearch";
-        public static float VERSION = 0.144f;
-        public static String VERSIONDATE = "20181123";
+        public static float VERSION = 0.151f;
+        public static String VERSIONDATE = "20181126";
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>

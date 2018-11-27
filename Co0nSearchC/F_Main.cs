@@ -11,8 +11,9 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
+using Co0nUtilZ;
 
-namespace Co0nSearchC
+namespace CSearch
 {
     public partial class F_Main : Form
     {
@@ -258,9 +259,12 @@ namespace Co0nSearchC
                 }
                 else
                 {
-                    foreach (String BaseDir in this.settings.BaseDirs)
-                    { //Für jedes Basisverzeichnis einen Sucher initilisieren.
-                        this.indexers.Add(new C_FilesIndexer(@BaseDir, this._showhiddenfiles));
+                    foreach (C_BaseDir BaseDir in this.settings.BaseDirs)
+                    { //Für jedes aktive Basisverzeichnis einen Sucher initilisieren.
+                        if (BaseDir.IsEnabled)
+                        {
+                            this.indexers.Add(new C_FilesIndexer(@BaseDir.Path, this._showhiddenfiles));
+                        }
                     }
 
                     foreach (C_FilesIndexer indexer in this.indexers)
@@ -311,6 +315,16 @@ namespace Co0nSearchC
                     }
                 }
 
+                //Wait for SearchThreads to stop
+                foreach (C_FilesIndexer indexer in this.indexers)
+                {
+                    if (indexer._SearchThread != null && indexer._SearchThread.ThreadState == System.Threading.ThreadState.Running)
+                    {
+                        indexer._SearchThread.Join();
+                    }
+
+                }
+
             }
         }
 
@@ -345,6 +359,8 @@ namespace Co0nSearchC
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {// Catches the Form closing Event to ask the user to really quit.
+
+            /* //Commented out, because it prevents Windows 10 from shutting down... :/ Thx Microsoft.
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
 
@@ -358,6 +374,9 @@ namespace Co0nSearchC
             {
                 this.StopSeachers();
             }
+            */
+
+            this.StopSeachers();
         }
 
         private void suchordnerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -474,15 +493,7 @@ namespace Co0nSearchC
                 //Enter pressed
                 this.StopSeachers();
 
-                //Wait for SearchThreads to stop
-                foreach (C_FilesIndexer indexer in this.indexers)
-                {
-                    if (indexer._SearchThread != null && indexer._SearchThread.ThreadState == System.Threading.ThreadState.Running)
-                    {
-                        indexer._SearchThread.Join();
-                    }
-
-                }
+                
 
                 if (this.txtSearch.Text.Length >= 2)
                 {
@@ -499,7 +510,9 @@ namespace Co0nSearchC
         {
             String title = "Changelog:";
             String msg = "";
-            msg+="Version 0.144 (20181123):\r\n=========================\r\n- Added:\r\n\t- Changelog\r\n- fixed Bugs:\r\n\t- Itemlist behind statusbar\r\n";
+            msg += "Version 0.151 (20181126):\r\n=========================\r\n- fixed Bugs:\r\n\t- Stopping searchers (e.g. when changing folders) and waiting for them to finish \r\n\r\n";
+            msg += "Version 0.150 (20181126):\r\n=========================\r\n- Added:\r\n\t- En-/Disabling of Searchdirectories\r\n- fixed Bugs:\r\n\t- Fixed wrong namespaces in source code\r\n\r\n";
+            msg += "Version 0.144 (20181123):\r\n=========================\r\n- Added:\r\n\t- Changelog\r\n- fixed Bugs:\r\n\t- Itemlist behind statusbar\r\n";
             Form AboutForm = new F_About(msg, title);
             AboutForm.ShowDialog();
         }
