@@ -50,6 +50,7 @@ Global
 		{C648C1CB-FC11-45C0-A891-713B2CE45888}.Debug|Any CPU.Build.0 = Release
 		{C648C1CB-FC11-45C0-A891-713B2CE45888}.Debug|x64.ActiveCfg = Debug
 		{C648C1CB-FC11-45C0-A891-713B2CE45888}.Release|Any CPU.ActiveCfg = Release
+		{C648C1CB-FC11-45C0-A891-713B2CE45888}.Release|Any CPU.Build.0 = Release
 		{C648C1CB-FC11-45C0-A891-713B2CE45888}.Release|x64.ActiveCfg = Release
 		{C648C1CB-FC11-45C0-A891-713B2CE45888}.x64|Any CPU.ActiveCfg = Release
 		{C648C1CB-FC11-45C0-A891-713B2CE45888}.x64|x64.ActiveCfg = Release
@@ -59,10 +60,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {268D17BC-36AE-40C8-BACB-B6D843AFAAD1}
-	EndGlobalSection
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-		x64|Any CPU = x64|Any CPU
 	EndGlobalSection
 EndGlobal
