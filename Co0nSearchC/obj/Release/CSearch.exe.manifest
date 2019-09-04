@@ -43,6 +43,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Co0n_GUI.dll" size="5120">
+      <assemblyIdentity name="Co0n_GUI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ZPlhvdTruoZWH8E7FVbmhYebCwXOmPW5gdxT1j5hdCU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Co0nUtilZ.dll" size="59904">
       <assemblyIdentity name="Co0nUtilZ" version="0.3.1.1" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -50,19 +62,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/ciqdGvNGZKJ1sjuhNm/hNW2dRbU/uNUjQwEvQj/U4Q=</dsig:DigestValue>
+        <dsig:DigestValue>GNbATPjKEbYx6HiFVgAwIBND/1GbETpMF0AzafdNZ8Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="69912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="69120">
       <assemblyIdentity name="CSearch" version="0.1.5.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iiwLKHJ39qFRE/9B9VzD9kq9B8jt8937UGZ1sbKTbs0=</dsig:DigestValue>
+        <dsig:DigestValue>GANnhwNUT/iwNbxaVg4VVD2y6A2HERGk0qo5iwtV/JY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

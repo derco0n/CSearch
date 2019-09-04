@@ -54,7 +54,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>F2C27C113FF455ED4178851B1CA496E9D1B812A6</ManifestCertificateThumbprint>
@@ -180,10 +180,26 @@
     <Content Include="logo_small.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\mitgebrachtes\Entwicklungen\C#\Co0nUtilZ\Co0nUtilZ\Co0nUtilZ.csproj">
+    <ProjectReference Include="..\..\..\Co0n_GUI\Co0n_GUI\Co0n_GUI\Co0n_GUI.csproj">
+      <Project>{eef24d03-1187-4763-9998-ba98e43630ad}</Project>
+      <Name>Co0n_GUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\coonutils\Co0nUtilZ\Co0nUtilZ.csproj">
       <Project>{4de7935f-7954-4329-b40a-e0f03762d696}</Project>
       <Name>Co0nUtilZ</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="GPL-License.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

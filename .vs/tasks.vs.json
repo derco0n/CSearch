@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "Task-CSearch-Installer",
+      "appliesTo": "CSearch-Installer/",
+      "type": "launch"
+    }
+  ]
+}

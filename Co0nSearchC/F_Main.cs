@@ -19,10 +19,11 @@ namespace CSearch
     {
         public F_Main(bool showhiddenfiles)
         {
-            this._showhiddenfiles = showhiddenfiles;
+            this._showhiddenfiles = showhiddenfiles;            
             InitializeComponent();
         }
 
+        private Color OriginalBackgroundColor;
         private bool _showhiddenfiles = false; // Find hiddenfiles too...
 
         public C_Settings settings;
@@ -44,6 +45,8 @@ namespace CSearch
             {
                 processedfolders += indexer.foldersProcessedsoFar;
             }
+
+                                    
             this.updateCountLabel("Bisher " + processedfolders.ToString() + " Ordner durchsucht -> " + this._items.ToString() + " Elemente gefunden...");
         }
 
@@ -71,6 +74,8 @@ namespace CSearch
             }
             //DEBUG ENDE
             */
+
+            float averange = (float)processedfolders / (float)this._items;
 
             this.updateFileListAndLabels(false, newitems, "Bisher " + processedfolders + " Ordner durchsucht -> " + this._items.ToString() + " Elemente gefunden...", "Suche läuft (in " + this._runningthreads.ToString() + " Basisordnern):");
         }
@@ -138,19 +143,31 @@ namespace CSearch
                     totalitemsfound.AddRange(indexer.FoundItems);
                 }
 
+                string result = "";
+                float averange = (float)processedfolders / (float)Math.Round(ts.TotalSeconds, 2);
+                if (totalitemsfound.Count > 0)
+                {                    
+                    result = processedfolders.ToString() + " Ordner durchsucht (" + Math.Round(averange, 0).ToString() + " Ordner/Sekunde) -> " + totalitemsfound.Count.ToString() + " Elemente gefunden...";
+                }
+                else {
+                    result = processedfolders.ToString() + " Ordner durchsucht (" + Math.Round(averange, 0).ToString() + " Ordner/Sekunde) -> leider keine Elemente gefunden...";
+                }
 
-
-                string result = processedfolders.ToString() + " Ordner durchsucht -> " + totalitemsfound.Count.ToString() + " Elemente gefunden...";
+                
 
                 this.updateFileListAndLabels(true, totalitemsfound, result, state);
 
 
             }
+            //Suchinfo's einfärben
+            this.lblState.BackColor = Color.LightGreen;
+            this.lblCount.BackColor = Color.LightGreen;
 
         }
 
         private void HandleSearchStarted(object sender, String msg)
-        {
+        {//Wird beim Start einer neuen Suche (von jedem Thread) aufgerufen                
+
             this.SearchStarted = DateTime.Now;
             
             this._runningthreads++;
@@ -176,6 +193,7 @@ namespace CSearch
                 }
 
                 this.lstFiles.Items.AddRange(items.ToArray());
+                this.lstFiles.ClearSelected();
 
                 //Labels aktualisieren
                 this.updateCountLabel(resultmsg);
@@ -214,10 +232,13 @@ namespace CSearch
                 this.lblCount.Text = msg;
             }
         }
-
+        /// <summary>
+        /// Startet einen neue Suche
+        /// </summary>
+        /// <param name="searchfor"></param>
         private void startSearch(String searchfor)
         {
-            //this.filesfound=new List<C_FilesIndexerElement>(); //DBEUG
+            //this.filesfound=new List<C_FilesIndexerElement>(); //DEBUG
             this.lstFiles.Items.Clear();
             this._items = 0;
 
@@ -226,9 +247,12 @@ namespace CSearch
 
                 //this._runningthreads += 1;
                 indexer.FindItems(searchfor, true);
+                this.lblState.Text = "Suche läuft(in " + this._runningthreads.ToString() + " Basisordnern):";
             }
 
-            //indexers[0].FindItems(searchfor, true); //TODO: 
+            //Suchinfo's einfärben
+            this.lblState.BackColor = Color.Yellow;
+            this.lblCount.BackColor = Color.Yellow;
 
         }
 
@@ -285,12 +309,13 @@ namespace CSearch
         { // Start der Mainform
             this.getSettings();
             intializeIndexers();
+            this.OriginalBackgroundColor = this.lblState.BackColor;
 
             this.Text = Program.APPNAME + " Version: " + Program.VERSION.ToString() + " (" + Program.VERSIONDATE + ")";
             if (this._showhiddenfiles)
             {
                 this.Text += " (include hidden)";
-            }
+            }            
         }
 
         private void lstFiles_SelectedIndexChanged(object sender, EventArgs e)
@@ -326,6 +351,9 @@ namespace CSearch
                 }
 
             }
+            //Suchinfo's einfärben
+            this.lblState.BackColor = this.OriginalBackgroundColor;
+            this.lblCount.BackColor = this.OriginalBackgroundColor;
         }
 
         /*
@@ -403,7 +431,7 @@ namespace CSearch
         private void überDiesesProgrammToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String title = "Über dieses Programm:";
-            String msg = Program.APPNAME + " Version: " + Program.VERSION.ToString() + " (" + Program.VERSIONDATE + ")" + "\r\n\r\nCSearch: dient der rekursiven multithreaded Suche nach Dateien und Ordnern in verschiedenen Basisordnern.\r\nDas Ziel ist es, eine schnelle Suche in verschiedenenn Ordnerstrukturen gleichzeitig zu ermöglichen\r\nund dabei ein einfacheres Handling und eines bessere Geschwindigkeit als die integrierte Windowssuche (welche viel detaillierter sucht, aber wesentlich mehr Zeit benötigt) zu bieten.\r\n\r\nCopyright (C) <2018>  <Dennis Marx>\r\n\r\n    This program is free software: you can redistribute it and/or modify\r\n    it under the terms of the GNU General Public License as published by\r\n    the Free Software Foundation, either version 3 of the License, or\r\n    (at your option) any later version.\r\n\r\n    This program is distributed in the hope that it will be useful,\r\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\r\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\n    GNU General Public License for more details.\r\n\r\n    You should have received a copy of the GNU General Public License\r\n    along with this program.  If not, see <https://www.gnu.org/licenses/>.\r\n\r\nQuellcode unter:\r\nhttps://github.com/derco0n/CSearch";
+            String msg = Program.APPNAME + " Version: " + Program.VERSION.ToString() + " (" + Program.VERSIONDATE + ")" + "\r\n\r\nCSearch: dient der rekursiven multithreaded Suche nach Dateien und Ordnern in verschiedenen Basisordnern.\r\nDas Ziel ist es, eine schnelle Suche in verschiedenenn Ordnerstrukturen gleichzeitig zu ermöglichen\r\nund dabei ein einfacheres Handling und eines bessere Geschwindigkeit als die integrierte Windowssuche (welche viel detaillierter sucht, aber wesentlich mehr Zeit benötigt) zu bieten.\r\n\r\nDeveloped by <Dennis Marx> <2019>\r\n\r\n    This program is free software: you can redistribute it and/or modify\r\n    it under the terms of the GNU General Public License as published by\r\n    the Free Software Foundation, either version 3 of the License, or\r\n    (at your option) any later version.\r\n\r\n    This program is distributed in the hope that it will be useful,\r\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\r\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\n    GNU General Public License for more details.\r\n\r\n    You should have received a copy of the GNU General Public License\r\n    along with this program.  If not, see <https://www.gnu.org/licenses/>.\r\n\r\nQuellcode unter:\r\nhttps://github.com/derco0n/CSearch";
             Form AboutForm = new F_About(msg, title);
             AboutForm.ShowDialog();
         }
@@ -412,7 +440,8 @@ namespace CSearch
 
         private void lstFiles_MouseHover(object sender, EventArgs e)
         {
-                    }
+            this.lstFiles.Focus();
+        }
 
         private void lstFiles_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -450,35 +479,25 @@ namespace CSearch
 
         private void lstFiles_MouseMove(object sender, MouseEventArgs e)
         {
-            //Mousepoint hovers Listbox:
-            //Determine Item by cursor-position and do something with it...
+           // if (this._runningthreads == 0) { 
+                //Nur wenn kein Suchthread läuft...
 
-            /*
-            try
-            {
-                ListBox objListBox = (ListBox)sender;
-                int itemIndex = -1;
-                
-                    if (objListBox.ItemHeight != 0)
-                    {
-                        itemIndex = e.Y / objListBox.ItemHeight;
-                        itemIndex += objListBox.TopIndex;
-                    }
-
-                if (itemIndex >= 0)
+                //Index des Item unterm Mauszeiger ermitteln
+                Point point = lstFiles.PointToClient(Cursor.Position);
+                int index = lstFiles.IndexFromPoint(point);
+                if (index < 0)
                 {
-                    C_FilesIndexerElement highlightedelement = (C_FilesIndexerElement)lstFiles.Items[itemIndex];
-                    ToolTip newToolTip = new ToolTip();
-                    newToolTip.ShowAlways = true;
-                    newToolTip.UseFading = true;
-                    newToolTip.Show(highlightedelement.fileInfo.LastWriteTime.ToLocalTime().ToString(), lstFiles);
+                    return;
                 }
+
+                //Wenn der Index positiv ist, also existiert, dieses Element auswählen...
+                //...wodurch es markiert wird...
+                lstFiles.SelectedIndex = index;
                 
-            }
-            catch (Exception ex)
-            {
-            }
-            */
+
+            //}
+
+            
         }
 
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -489,18 +508,17 @@ namespace CSearch
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
+            {//Wenn im Suchfeld jemand ENTER drückt
                 //Enter pressed
-                this.StopSeachers();
-
-                
+                this.StopSeachers(); //Laufende Suchthreads beenden                
 
                 if (this.txtSearch.Text.Length >= 2)
-                {
+                {// Wenn der neue Suchbgeriff mindestens 2 Zeichen hat, neue Suche starten.
                     this.updateCountLabel("Bisher keine Daten.");
                     this.updateStateLabel("Suche beginnt...");
                     this.startSearch(this.txtSearch.Text);
                 }
+                //Verhindern dass ENTER weitere Auswirkungen hat (erneute Ereignisbehandlung oder Zeilenumbrug um Suchstring)
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
@@ -510,6 +528,7 @@ namespace CSearch
         {
             String title = "Changelog:";
             String msg = "";
+            msg += "Version 0.160 (20190904):\r\n=========================\r\n- Added:\r\n\t- Averange folders per second\r\n\t- Colored Statustext while searching\r\n\t- Highlighting Listelement while pointing with Mouse\r\n\r\n";
             msg += "Version 0.151 (20181126):\r\n=========================\r\n- fixed Bugs:\r\n\t- Stopping searchers (e.g. when changing folders) and waiting for them to finish \r\n\r\n";
             msg += "Version 0.150 (20181126):\r\n=========================\r\n- Added:\r\n\t- En-/Disabling of Searchdirectories\r\n- fixed Bugs:\r\n\t- Fixed wrong namespaces in source code\r\n\r\n";
             msg += "Version 0.144 (20181123):\r\n=========================\r\n- Added:\r\n\t- Changelog\r\n- fixed Bugs:\r\n\t- Itemlist behind statusbar\r\n";
