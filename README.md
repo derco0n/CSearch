@@ -4,16 +4,14 @@
 A lightweight Tool to search for files and folders (multithreaded) which does **not** require administrative permissions and runs on Microsoft Windows (and may be Linux with some kind runtime...).
 
 
-## How does it look like?
-It looks like this:
-![CSearch-Screenshot](https://github.com/derco0n/CSearch/blob/master/CSearch_Screenshot.PNG)
-
 ## How to use it?
 Clone Porject and build on your own
 *Note:
-This software requires [Co0nUtilZ-Library]https://github.com/derco0n/coonutils, which you may link to your projectfolder as project or assembly (.dll-file).*
+This software requires libraries [Co0nUtilZ-Library]https://github.com/derco0n/coonutils, which you may link to your projectfolder as project or assembly (.dll-file).*
 
 or download compiled binaries here: https://github.com/derco0n/CSearch/releases
+
+and [Co0n_GUI]https://github.com/derco0n/Co0n_GUI
 
 ## Which Licence?
 This software is licenced under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
