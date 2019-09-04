@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CA30ADFDAA5994AD0DD29EB57A4ED843"
+        "OwnerKey" = "8:_B528A29C110A42FAA503A4DBEFAFB5DF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B528A29C110A42FAA503A4DBEFAFB5DF"
         "MsmSig" = "8:_UNDEFINED"
@@ -41,6 +47,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_93E1EA89A6A0AC03592F8B83E714085D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CA30ADFDAA5994AD0DD29EB57A4ED843"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -74,6 +86,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -81,7 +101,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\CSearch_0.151.0.msi"
+        "OutputFilename" = "8:Release\\CSearch_0.160.0.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -198,6 +218,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CA30ADFDAA5994AD0DD29EB57A4ED843"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Co0n_GUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_CA30ADFDAA5994AD0DD29EB57A4ED843"
+                    {
+                    "Name" = "8:Co0n_GUI.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Co0n_GUI.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_01DBAA3E66EE459296F51746CA02427D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -265,15 +316,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CSearch"
-        "ProductCode" = "8:{0CD231C1-7C45-4D2A-94AB-1986BABE22A8}"
-        "PackageCode" = "8:{3B9DEE83-F484-4A02-8418-FBAEFBC0EA49}"
+        "ProductCode" = "8:{D6916C7F-8ADF-4256-BDB9-5A72AD01E491}"
+        "PackageCode" = "8:{B17F3A35-BBF2-4C34-9ECA-98B40FBAA74B}"
         "UpgradeCode" = "8:{24C84617-6145-4D58-B90C-3DA196FFC6A9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:0.151.0"
+        "ProductVersion" = "8:0.160.0"
         "Manufacturer" = "8:derCo0n"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/derco0n"

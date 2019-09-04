@@ -180,6 +180,10 @@
     <Content Include="logo_small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Co0n_GUI\Co0n_GUI\Co0n_GUI\Co0n_GUI.csproj">
+      <Project>{eef24d03-1187-4763-9998-ba98e43630ad}</Project>
+      <Name>Co0n_GUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\coonutils\Co0nUtilZ\Co0nUtilZ.csproj">
       <Project>{4de7935f-7954-4329-b40a-e0f03762d696}</Project>
       <Name>Co0nUtilZ</Name>

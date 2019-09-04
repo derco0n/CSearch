@@ -58,3 +58,5 @@ C:\Users\co0n\Source\Repos\derco0n\CSearch\Co0nSearchC\obj\Release\CSearch.appli
 C:\Users\co0n\Source\Repos\derco0n\CSearch\Co0nSearchC\obj\Release\CSearch.csproj.CopyComplete
 C:\Users\co0n\Source\Repos\derco0n\CSearch\Co0nSearchC\obj\Release\CSearch.exe
 C:\Users\co0n\Source\Repos\derco0n\CSearch\Co0nSearchC\obj\Release\CSearch.pdb
+C:\Users\co0n\Source\Repos\derco0n\CSearch\Co0nSearchC\bin\Release\Co0n_GUI.dll
+C:\Users\co0n\Source\Repos\derco0n\CSearch\Co0nSearchC\bin\Release\Co0n_GUI.pdb

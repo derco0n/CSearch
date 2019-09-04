@@ -1,4 +1,6 @@
-﻿namespace CSearch
+﻿using Co0n_GUI;
+
+namespace CSearch
 {
     partial class F_Main
     {
@@ -31,7 +33,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_Main));
             this.lstFiles = new System.Windows.Forms.ListBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            //this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtSearch = new Co0n_GUI.C_HintTextbox("Bitte mindestens zwei Zeichen eingeben und mit Enter bestätigen.");
             this.lblCount = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.programmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,12 +43,12 @@
             this.suchordnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überDiesesProgrammToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changelogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpSearch = new System.Windows.Forms.GroupBox();
             this.grpResults = new System.Windows.Forms.GroupBox();
             this.grpState = new System.Windows.Forms.GroupBox();
             this.lblState = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.changelogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.grpSearch.SuspendLayout();
             this.grpResults.SuspendLayout();
@@ -151,6 +154,13 @@
             this.überDiesesProgrammToolStripMenuItem.Text = "Über dieses Programm";
             this.überDiesesProgrammToolStripMenuItem.Click += new System.EventHandler(this.überDiesesProgrammToolStripMenuItem_Click);
             // 
+            // changelogToolStripMenuItem
+            // 
+            this.changelogToolStripMenuItem.Name = "changelogToolStripMenuItem";
+            this.changelogToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.changelogToolStripMenuItem.Text = "Changelog";
+            this.changelogToolStripMenuItem.Click += new System.EventHandler(this.changelogToolStripMenuItem_Click);
+            // 
             // grpSearch
             // 
             this.grpSearch.Controls.Add(this.txtSearch);
@@ -196,13 +206,6 @@
             this.lblState.Size = new System.Drawing.Size(75, 13);
             this.lblState.TabIndex = 3;
             this.lblState.Text = "Suche inaktiv.";
-            // 
-            // changelogToolStripMenuItem
-            // 
-            this.changelogToolStripMenuItem.Name = "changelogToolStripMenuItem";
-            this.changelogToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.changelogToolStripMenuItem.Text = "Changelog";
-            this.changelogToolStripMenuItem.Click += new System.EventHandler(this.changelogToolStripMenuItem_Click);
             // 
             // F_Main
             // 

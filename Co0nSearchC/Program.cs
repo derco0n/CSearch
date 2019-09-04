@@ -10,8 +10,8 @@ namespace CSearch
     {
         
         public static String APPNAME = "CSearch";
-        public static float VERSION = 0.151f;
-        public static String VERSIONDATE = "20181126";
+        public static float VERSION = 0.160f;
+        public static String VERSIONDATE = "20190904";
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
