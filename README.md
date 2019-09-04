@@ -3,9 +3,9 @@
 ## What is it?
 A lightweight Tool to search for files and folders (multithreaded) which does **not** require administrative permissions and runs on Microsoft Windows (and may be Linux with some kind runtime...).
 
-
 ## How to use it?
-Clone Porject and build on your own
+Clone Project and build on your own
+
 *Note:
 This software requires libraries [Co0nUtilZ-Library]https://github.com/derco0n/coonutils, which you may link to your projectfolder as project or assembly (.dll-file).*
 
