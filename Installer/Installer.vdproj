@@ -15,13 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_918257054089C9B98E74ACEDAEEE7C9C"
+        "MsmKey" = "8:_10FA22B461FBAD3BCDF5CFD4EF8D0A1D"
         "OwnerKey" = "8:_B528A29C110A42FAA503A4DBEFAFB5DF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_93E1EA89A6A0AC03592F8B83E714085D"
+        "MsmKey" = "8:_2006E2852C968A8463B86A40BB14F51B"
+        "OwnerKey" = "8:_B528A29C110A42FAA503A4DBEFAFB5DF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_918257054089C9B98E74ACEDAEEE7C9C"
         "OwnerKey" = "8:_B528A29C110A42FAA503A4DBEFAFB5DF"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -33,12 +39,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CA30ADFDAA5994AD0DD29EB57A4ED843"
-        "OwnerKey" = "8:_B528A29C110A42FAA503A4DBEFAFB5DF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B528A29C110A42FAA503A4DBEFAFB5DF"
         "MsmSig" = "8:_UNDEFINED"
@@ -46,13 +46,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_93E1EA89A6A0AC03592F8B83E714085D"
+        "OwnerKey" = "8:_2006E2852C968A8463B86A40BB14F51B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CA30ADFDAA5994AD0DD29EB57A4ED843"
+        "OwnerKey" = "8:_10FA22B461FBAD3BCDF5CFD4EF8D0A1D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -101,7 +101,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\CSearch_0.160.0.msi"
+        "OutputFilename" = "8:Release\\CSearch_0.162.0.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -156,20 +156,20 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_918257054089C9B98E74ACEDAEEE7C9C"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_10FA22B461FBAD3BCDF5CFD4EF8D0A1D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:Co0n_GUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_918257054089C9B98E74ACEDAEEE7C9C"
+                    "_10FA22B461FBAD3BCDF5CFD4EF8D0A1D"
                     {
-                    "Name" = "8:System.Net.Http.dll"
+                    "Name" = "8:Co0n_GUI.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.Net.Http.dll"
+            "SourcePath" = "8:Co0n_GUI.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_01DBAA3E66EE459296F51746CA02427D"
@@ -187,14 +187,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_93E1EA89A6A0AC03592F8B83E714085D"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2006E2852C968A8463B86A40BB14F51B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Co0nUtilZ, Version=0.3.1.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_93E1EA89A6A0AC03592F8B83E714085D"
+                    "_2006E2852C968A8463B86A40BB14F51B"
                     {
                     "Name" = "8:Co0nUtilZ.dll"
                     "Attributes" = "3:512"
@@ -218,20 +218,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CA30ADFDAA5994AD0DD29EB57A4ED843"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_918257054089C9B98E74ACEDAEEE7C9C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Co0n_GUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_CA30ADFDAA5994AD0DD29EB57A4ED843"
+                    "_918257054089C9B98E74ACEDAEEE7C9C"
                     {
-                    "Name" = "8:Co0n_GUI.dll"
+                    "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Co0n_GUI.dll"
+            "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_01DBAA3E66EE459296F51746CA02427D"
@@ -316,15 +316,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CSearch"
-        "ProductCode" = "8:{D6916C7F-8ADF-4256-BDB9-5A72AD01E491}"
-        "PackageCode" = "8:{B17F3A35-BBF2-4C34-9ECA-98B40FBAA74B}"
+        "ProductCode" = "8:{60B89FDA-38DE-4FEE-8D4B-7035E6E77AE1}"
+        "PackageCode" = "8:{73365A0A-9785-49E1-A772-F833A10964DC}"
         "UpgradeCode" = "8:{24C84617-6145-4D58-B90C-3DA196FFC6A9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:0.160.0"
+        "ProductVersion" = "8:0.162.0"
         "Manufacturer" = "8:derCo0n"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/derco0n"
