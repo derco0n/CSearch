@@ -1,0 +1,6 @@
+[submodule "Co0n_GUI"]
+	path = Co0n_GUI
+	url = https://github.com/derco0n/Co0n_GUI
+[submodule "coonutils"]
+	path = coonutils
+	url = https://github.com/derco0n/coonutils
