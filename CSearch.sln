@@ -8,11 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSearch", "Co0nSearchC\CSea
 		{4DE7935F-7954-4329-B40A-E0F03762D696} = {4DE7935F-7954-4329-B40A-E0F03762D696}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Co0nUtilZ", "..\coonutils\Co0nUtilZ\Co0nUtilZ.csproj", "{4DE7935F-7954-4329-B40A-E0F03762D696}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Co0nUtilZ", "coonutils\Co0nUtilZ\Co0nUtilZ.csproj", "{4DE7935F-7954-4329-B40A-E0F03762D696}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{C648C1CB-FC11-45C0-A891-713B2CE45888}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Co0n_GUI", "..\..\Co0n_GUI\Co0n_GUI\Co0n_GUI\Co0n_GUI.csproj", "{EEF24D03-1187-4763-9998-BA98E43630AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Co0n_GUI", "Co0n_GUI\Co0n_GUI\Co0n_GUI\Co0n_GUI.csproj", "{EEF24D03-1187-4763-9998-BA98E43630AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
