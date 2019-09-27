@@ -17,14 +17,36 @@ namespace CSearch
 {
     public partial class F_Main : Form
     {
-        public F_Main(bool showhiddenfiles)
+        public F_Main(bool showhiddenfiles, bool preview)
         {
-            this._showhiddenfiles = showhiddenfiles;            
+            this._showhiddenfiles = showhiddenfiles;
+            this._showpreview = preview;
+            this.txtSearch = new Co0n_GUI.C_HintTextbox();
             InitializeComponent();
+
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearch.Location = new System.Drawing.Point(3, 16);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceHolderText = "Bitte mindestens zwei Zeichen eingeben und mit Enter bestätigen.";
+            this.txtSearch.Size = new System.Drawing.Size(1119, 20);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.Text = "Bitte mindestens zwei Zeichen eingeben und mit Enter bestätigen.";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            this.grpSearch.Controls.Add(this.txtSearch);
         }
 
+        
+        
         private Color OriginalBackgroundColor;
         private bool _showhiddenfiles = false; // Find hiddenfiles too...
+        private bool _showpreview = false; 
 
         public C_Settings settings;
         private List<C_FilesIndexer> indexers = new List<C_FilesIndexer>();
@@ -36,7 +58,36 @@ namespace CSearch
         private int _runningthreads = 0;
 
         // private List<C_FilesIndexerElement> filesfound = new List<C_FilesIndexerElement>(); //DEBUG
-        
+
+
+        private void setTitle() {
+            this.Text = Program.APPNAME + " Version: " + Program.VERSION.ToString() + " (" + Program.VERSIONDATE + ")";
+            if (this._showhiddenfiles)
+            {
+                this.Text += " (include hidden)";
+            }
+            if (this._showpreview)
+            {
+                this.Text += " (showing preview)";
+            }
+            else
+            {
+                this.Text += " (fast mode - no preview)";
+            }
+
+        }
+
+        private void setMenuPreview() {
+            if (this._showpreview)
+            {
+                this.vorschauToolStripMenuItem.Text = "Vorschau abschalten (schneller Modus)...";
+            }
+            else
+            {
+                this.vorschauToolStripMenuItem.Text = "Vorschau einschalten (langsam)...";
+            }
+            
+        }
 
         private void HandleFolderProcessed(object sender)
         {// Aktualisiert die Anzeige der berabeiteten Ordner
@@ -157,11 +208,11 @@ namespace CSearch
 
                 this.updateFileListAndLabels(true, totalitemsfound, result, state);
 
-
+                //Suchinfo's einfärben
+                this.lblState.BackColor = Color.LightGreen;
+                this.lblCount.BackColor = Color.LightGreen;
             }
-            //Suchinfo's einfärben
-            this.lblState.BackColor = Color.LightGreen;
-            this.lblCount.BackColor = Color.LightGreen;
+           
 
         }
 
@@ -192,8 +243,11 @@ namespace CSearch
                     this.lstFiles.Items.Clear();
                 }
 
-                this.lstFiles.Items.AddRange(items.ToArray());
-                this.lstFiles.ClearSelected();
+                if (this._showpreview || clearlist)
+                {//Wenn die Suche beendet ist oder der User Suchergebnisse angezeigt haben möchte
+                    this.lstFiles.Items.AddRange(items.ToArray());
+                    this.lstFiles.ClearSelected();
+                }
 
                 //Labels aktualisieren
                 this.updateCountLabel(resultmsg);
@@ -311,11 +365,8 @@ namespace CSearch
             intializeIndexers();
             this.OriginalBackgroundColor = this.lblState.BackColor;
 
-            this.Text = Program.APPNAME + " Version: " + Program.VERSION.ToString() + " (" + Program.VERSIONDATE + ")";
-            if (this._showhiddenfiles)
-            {
-                this.Text += " (include hidden)";
-            }            
+            this.setTitle();
+            this.setMenuPreview();
         }
 
         private void lstFiles_SelectedIndexChanged(object sender, EventArgs e)
@@ -528,12 +579,20 @@ namespace CSearch
         {
             String title = "Changelog:";
             String msg = "";
+            msg += "Version 0.162 (20190927):\r\n=========================\r\n- fixed Bugs:\r\n\t- Setting Labels to green when all (not just one) searchers are finished.\r\n- Added:\r\n\t- Massive speedup (about 295%) due to disabled Preview\r\n\t- Preview toggleable in menu\r\n\r\n";
             msg += "Version 0.160 (20190904):\r\n=========================\r\n- Added:\r\n\t- Averange folders per second\r\n\t- Colored Statustext while searching\r\n\t- Highlighting Listelement while pointing with Mouse\r\n\r\n";
             msg += "Version 0.151 (20181126):\r\n=========================\r\n- fixed Bugs:\r\n\t- Stopping searchers (e.g. when changing folders) and waiting for them to finish \r\n\r\n";
             msg += "Version 0.150 (20181126):\r\n=========================\r\n- Added:\r\n\t- En-/Disabling of Searchdirectories\r\n- fixed Bugs:\r\n\t- Fixed wrong namespaces in source code\r\n\r\n";
             msg += "Version 0.144 (20181123):\r\n=========================\r\n- Added:\r\n\t- Changelog\r\n- fixed Bugs:\r\n\t- Itemlist behind statusbar\r\n";
             Form AboutForm = new F_About(msg, title);
             AboutForm.ShowDialog();
+        }
+
+        private void vorschauToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this._showpreview = !this._showpreview; //Toggle Preview on/off
+            this.setTitle();
+            this.setMenuPreview();
         }
 
         private void lblCount_Click(object sender, EventArgs e)

@@ -62,19 +62,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8UHLgz8Ah4U/SFspIOdZWXweWf6u1qh0lvJJOdYm7wc=</dsig:DigestValue>
+        <dsig:DigestValue>bv9FN3c65pZgtUZ/SaxDXj+HRBkEX5WUmHRwyE68hz0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="70656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CSearch.exe" size="72192">
       <assemblyIdentity name="CSearch" version="0.1.5.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iyykc3RRAaDvKwz7x7XG3uUGM47Iz/VJDztgyPkjPGs=</dsig:DigestValue>
+        <dsig:DigestValue>VaFteHfcRkHVLoypjqbEcbhRiEUxY3tq9XfhC17QBi0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

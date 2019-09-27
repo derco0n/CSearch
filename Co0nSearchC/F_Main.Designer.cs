@@ -33,14 +33,13 @@ namespace CSearch
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_Main));
             this.lstFiles = new System.Windows.Forms.ListBox();
-            //this.txtSearch = new System.Windows.Forms.TextBox();
-            this.txtSearch = new Co0n_GUI.C_HintTextbox("Bitte mindestens zwei Zeichen eingeben und mit Enter bestätigen.");
             this.lblCount = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.programmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.suchordnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vorschauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überDiesesProgrammToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changelogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +49,6 @@ namespace CSearch
             this.lblState = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
-            this.grpSearch.SuspendLayout();
             this.grpResults.SuspendLayout();
             this.grpState.SuspendLayout();
             this.SuspendLayout();
@@ -71,18 +69,6 @@ namespace CSearch
             this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
             this.lstFiles.MouseHover += new System.EventHandler(this.lstFiles_MouseHover);
             this.lstFiles.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lstFiles_MouseMove);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearch.Location = new System.Drawing.Point(3, 16);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1119, 20);
-            this.txtSearch.TabIndex = 1;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
-            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // lblCount
             // 
@@ -126,7 +112,8 @@ namespace CSearch
             // einstellungenToolStripMenuItem
             // 
             this.einstellungenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.suchordnerToolStripMenuItem});
+            this.suchordnerToolStripMenuItem,
+            this.vorschauToolStripMenuItem});
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
             this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
@@ -134,9 +121,16 @@ namespace CSearch
             // suchordnerToolStripMenuItem
             // 
             this.suchordnerToolStripMenuItem.Name = "suchordnerToolStripMenuItem";
-            this.suchordnerToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.suchordnerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.suchordnerToolStripMenuItem.Text = "Suchordner";
             this.suchordnerToolStripMenuItem.Click += new System.EventHandler(this.suchordnerToolStripMenuItem_Click);
+            // 
+            // vorschauToolStripMenuItem
+            // 
+            this.vorschauToolStripMenuItem.Name = "vorschauToolStripMenuItem";
+            this.vorschauToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vorschauToolStripMenuItem.Text = "Vorschau";
+            this.vorschauToolStripMenuItem.Click += new System.EventHandler(this.vorschauToolStripMenuItem_Click);
             // 
             // überToolStripMenuItem
             // 
@@ -163,7 +157,6 @@ namespace CSearch
             // 
             // grpSearch
             // 
-            this.grpSearch.Controls.Add(this.txtSearch);
             this.grpSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpSearch.Location = new System.Drawing.Point(0, 24);
             this.grpSearch.Name = "grpSearch";
@@ -227,8 +220,6 @@ namespace CSearch
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.grpSearch.ResumeLayout(false);
-            this.grpSearch.PerformLayout();
             this.grpResults.ResumeLayout(false);
             this.grpState.ResumeLayout(false);
             this.grpState.PerformLayout();
@@ -240,7 +231,6 @@ namespace CSearch
         #endregion
 
         private System.Windows.Forms.ListBox lstFiles;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem programmToolStripMenuItem;
@@ -255,6 +245,8 @@ namespace CSearch
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem changelogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vorschauToolStripMenuItem;
+        private Co0n_GUI.C_HintTextbox txtSearch;
     }
 }
 
